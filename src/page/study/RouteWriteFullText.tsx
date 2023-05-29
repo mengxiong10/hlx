@@ -42,14 +42,19 @@ export function WriteFullText({ data, title }: WriteFullTextProps) {
     >
       {!editable
         ? data.map((item) => (
-            <Typography gutterBottom key={item.id} variant="study">
-              {item.character ? `${item.character}: ${item.content}` : item.content}
+            <Typography sx={{ display: 'flex' }} gutterBottom key={item.id} variant="study">
+              {item.character && (
+                <span style={{ flexBasis: '120px', textAlign: 'right' }}>{item.character}: </span>
+              )}
+              <span>{item.content}</span>
             </Typography>
           ))
         : data.slice(0, index + 1).map((item, i) => {
             return i === index ? (
               <Typography key={item.id} component="div" variant="study" sx={{ display: 'flex' }}>
-                {item.character && `${item.character}: `}
+                {item.character && (
+                  <span style={{ flexBasis: '120px', textAlign: 'right' }}>{item.character}: </span>
+                )}
                 <TextField
                   sx={{ flex: 1 }}
                   multiline
@@ -60,8 +65,11 @@ export function WriteFullText({ data, title }: WriteFullTextProps) {
                 />
               </Typography>
             ) : (
-              <Typography gutterBottom key={item.id} variant="study">
-                {item.character ? `${item.character}: ${item.content}` : item.content}
+              <Typography sx={{ display: 'flex' }} gutterBottom key={item.id} variant="study">
+                {item.character && (
+                  <span style={{ flexBasis: '120px', textAlign: 'right' }}>{item.character}: </span>
+                )}
+                <span>{item.content}</span>
               </Typography>
             );
           })}

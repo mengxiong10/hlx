@@ -32,7 +32,12 @@ export function SpeakingSentenceTip({ audioAttach, words = [] }: SpeakingSentenc
       </Typography>
       <Stack direction="row">
         {words.map((word) => (
-          <Button onClick={() => play(word.audioUrl)} variant="text" key={word.word}>
+          <Button
+            sx={{ minWidth: 0 }}
+            onClick={() => play(word.audioUrl)}
+            variant="text"
+            key={word.word}
+          >
             {word.word}
           </Button>
         ))}

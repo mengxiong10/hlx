@@ -1,5 +1,5 @@
 import { verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { Box, Paper } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { useState } from 'react';
 import { SortingInfo } from 'src/api/study';
 import { Sortable } from 'src/component/Sortable';
@@ -60,7 +60,7 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
               {...listeners}
               {...attributes}
             >
-              {item.content}
+              <Typography variant="study">{item.content}</Typography>
             </Paper>
           )}
         ></Sortable>

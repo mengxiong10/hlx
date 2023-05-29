@@ -50,6 +50,11 @@ const LinkBehavior = React.forwardRef<
 });
 
 const theme = createTheme({
+  typography: {
+    button: {
+      textTransform: 'none',
+    },
+  },
   palette: {
     primary: {
       ...deepOrange,
