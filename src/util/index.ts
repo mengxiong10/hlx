@@ -34,7 +34,7 @@ export function blobToBase64(blob: Blob): Promise<string> {
 }
 
 export function isSameSentence(a: string, b: string) {
-  const removeRest = (str: string) => str.replace(/[\p{P}]/gu, '').replace(/\s{2,}/g, ' ');
+  const removeRest = (str: string) => str.replace(/[\p{P}]/gu, '').replace(/\s+/g, '');
   return removeRest(a) === removeRest(b);
 }
 
