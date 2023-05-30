@@ -11,6 +11,7 @@ export interface UserInfo {
   realName: string;
   username: string; // phone
   phone: string;
+  grade: string;
   registerFlag: 0 | 1;
 }
 

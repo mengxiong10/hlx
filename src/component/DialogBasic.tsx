@@ -6,6 +6,7 @@ import {
   DialogActions,
   IconButton,
   Button,
+  ButtonProps,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
@@ -19,6 +20,7 @@ export interface ModalProps extends DialogProps {
   confirmLoading?: boolean;
   cancelButtonText?: string;
   confirmButtonText?: string;
+  confirmButtonProps?: ButtonProps;
 }
 
 export function Modal({
@@ -27,13 +29,14 @@ export function Modal({
   children,
   onClose,
   onConfirm,
+  confirmButtonProps,
   confirmLoading = false,
   cancelButtonText = '取消',
   confirmButtonText = '确定',
   ...restProps
 }: ModalProps) {
   return (
-    <Dialog {...restProps} fullWidth maxWidth="sm" open={open} onClose={onClose}>
+    <Dialog fullWidth maxWidth="sm" {...restProps} open={open} onClose={onClose}>
       <DialogTitle>
         {title}
         <IconButton
@@ -53,7 +56,7 @@ export function Modal({
       <DialogActions disableSpacing sx={{ py: 1 }}>
         <Button onClick={onClose}>{cancelButtonText}</Button>
         {onConfirm && (
-          <LoadingButton loading={confirmLoading} onClick={onConfirm}>
+          <LoadingButton loading={confirmLoading} onClick={onConfirm} {...confirmButtonProps}>
             {confirmButtonText}
           </LoadingButton>
         )}

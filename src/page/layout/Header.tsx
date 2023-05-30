@@ -14,6 +14,7 @@ import { Notifications } from '@mui/icons-material';
 import { useState } from 'react';
 import { auth } from 'src/auth/auth';
 import { useUser } from 'src/auth/AuthContext';
+import { Dept } from './Dept';
 
 export function Header({ children }: { children?: React.ReactNode }) {
   const user = useUser()!;
@@ -27,6 +28,9 @@ export function Header({ children }: { children?: React.ReactNode }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [deptVisible, setDeptVisible] = useState(false);
+  const deptTitle = user.deptId ? '更换部门' : '绑定部门';
 
   return (
     <AppBar
@@ -79,11 +83,15 @@ export function Header({ children }: { children?: React.ReactNode }) {
           onClose={handleClose}
         >
           <MenuItem dense>{user.username}</MenuItem>
+          <MenuItem dense onClick={() => setDeptVisible(true)}>
+            {deptTitle}
+          </MenuItem>
           <Divider />
           <MenuItem dense onClick={() => auth.clear()}>
             退出
           </MenuItem>
         </Menu>
+        <Dept title={deptTitle} open={deptVisible} onClose={() => setDeptVisible(false)}></Dept>
       </Toolbar>
     </AppBar>
   );
