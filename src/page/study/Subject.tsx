@@ -1,6 +1,7 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Attach } from 'src/api/study';
 import { PickByValue } from 'utility-types';
+import reactStringReplace from 'react-string-replace';
 import { MediaList } from './MediaList';
 
 type SubjectBaseKey<T> = keyof PickByValue<Required<T>, string | Attach>;
@@ -31,7 +32,19 @@ export function Subject<T extends Record<string, any>>({
     if (typeof value === 'string') {
       return (
         <Typography key={String(key)} variant="study" mb={1}>
-          {value}
+          {reactStringReplace(value, '#', () => {
+            return (
+              <Box
+                sx={{
+                  display: 'inline-flex',
+                  width: '2em',
+                  height: '1em',
+                  borderBottom: '1px solid',
+                  borderBottomColor: 'primary.main',
+                }}
+              ></Box>
+            );
+          })}
         </Typography>
       );
     }
