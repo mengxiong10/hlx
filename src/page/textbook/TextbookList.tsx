@@ -5,6 +5,7 @@ import {
   ListItemAvatar,
   ListItemButton,
   ListItemText,
+  Typography,
 } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import { TextBook } from 'src/api/textbook';
@@ -30,8 +31,19 @@ export function TextbookList({ data }: TextbookListProps) {
               <Avatar variant="square" src={value.imageUrl}></Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary={value.label}
-              secondary={`共 ${value.totalUnit} 课`}
+              primary={
+                <>
+                  {value.label}
+                  <Typography
+                    sx={{ display: 'inline', marginLeft: '0.5em' }}
+                    component="span"
+                    color="text.secondary"
+                  >
+                    {`(共 ${value.totalUnit} 题)`}
+                  </Typography>
+                </>
+              }
+              secondary={value.desc}
             ></ListItemText>
           </ListItemButton>
         </ListItem>

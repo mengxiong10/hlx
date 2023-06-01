@@ -7,6 +7,7 @@ import {
   ListItemText,
   Tab,
   Tabs,
+  Typography,
 } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -51,8 +52,19 @@ export function ExamList() {
                   <Avatar variant="square" src={examCover}></Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                  primary={value.examName}
-                  secondary={`共 ${value.examTotal} 题`}
+                  primary={
+                    <>
+                      {value.examName}
+                      <Typography
+                        sx={{ display: 'inline', marginLeft: '0.5em' }}
+                        component="span"
+                        color="text.secondary"
+                      >
+                        {`(共 ${value.examTotal} 题)`}
+                      </Typography>
+                    </>
+                  }
+                  secondary={value.examDesc}
                 ></ListItemText>
               </ListItemButton>
             </ListItem>
