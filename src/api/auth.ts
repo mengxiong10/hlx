@@ -56,3 +56,14 @@ export function registerUser(params: RegisterParams) {
     return { ...data, registerFlag: 1 as const };
   });
 }
+
+export interface ChangePwdParams {
+  id: number;
+  newPass: string;
+  pass: string;
+  username: string;
+}
+
+export function changePwd(params: ChangePwdParams) {
+  return request.post('/student/changePwd', params);
+}

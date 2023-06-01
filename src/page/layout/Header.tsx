@@ -14,7 +14,8 @@ import { Notifications } from '@mui/icons-material';
 import { useState } from 'react';
 import { auth } from 'src/auth/auth';
 import { useUser } from 'src/auth/AuthContext';
-import { Dept } from './Dept';
+import { Dept } from '../profile/Dept';
+import { Password } from '../profile/Password';
 
 export function Header({ children }: { children?: React.ReactNode }) {
   const user = useUser()!;
@@ -30,7 +31,8 @@ export function Header({ children }: { children?: React.ReactNode }) {
   };
 
   const [deptVisible, setDeptVisible] = useState(false);
-  const deptTitle = user.deptId ? '更换部门' : '绑定部门';
+  const [changePwdVisible, setChangePwdVisible] = useState(false);
+  const deptTitle = '选择部门';
 
   return (
     <AppBar
@@ -86,12 +88,16 @@ export function Header({ children }: { children?: React.ReactNode }) {
           <MenuItem dense onClick={() => setDeptVisible(true)}>
             {deptTitle}
           </MenuItem>
+          <MenuItem dense onClick={() => setChangePwdVisible(true)}>
+            修改密码
+          </MenuItem>
           <Divider />
           <MenuItem dense onClick={() => auth.clear()}>
             退出
           </MenuItem>
         </Menu>
         <Dept title={deptTitle} open={deptVisible} onClose={() => setDeptVisible(false)}></Dept>
+        <Password open={changePwdVisible} onClose={() => setChangePwdVisible(false)} />
       </Toolbar>
     </AppBar>
   );
