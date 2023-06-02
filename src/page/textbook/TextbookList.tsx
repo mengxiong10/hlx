@@ -39,7 +39,7 @@ export function TextbookList({ data }: TextbookListProps) {
                     component="span"
                     color="text.secondary"
                   >
-                    {`(共 ${value.totalUnit} 题)`}
+                    {`(共 ${value.totalUnit} 单元)`}
                   </Typography>
                 </>
               }

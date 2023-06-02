@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { WriteWordInfo } from 'src/api/study';
 import { Cloze } from 'src/component/Cloze';
+import { isSameSentence } from 'src/util';
 import { StudyContainer } from './Container';
 import { useStudy } from './useStudy';
 import { Tips } from './Tips';
@@ -14,17 +15,12 @@ export function WriteWord({ data, title }: { data: WriteWordInfo[]; title: strin
     data,
     reset,
     validate: (item) => values.length !== item.answer.split('|').length,
-    isCorrect: (item) =>
-      values.map((v) => v.trim().toLowerCase()).join('|') === item.answer.toLowerCase(),
+    isCorrect: (item) => isSameSentence(values.join('|'), item.answer),
   });
 
   return (
     <StudyContainer tips={<Tips {...current.tips} />} title={title} {...restProps}>
-      <Subject
-        data={current}
-        baseKey={['imageAttach', 'audioAttach', 'videoAttach']}
-        defaultIndex={-1}
-      ></Subject>
+      <Subject data={current} baseKey={['imageAttach', 'audioAttach', 'videoAttach']}></Subject>
       <Cloze content={current.content} value={values} onChange={setValues}></Cloze>
     </StudyContainer>
   );

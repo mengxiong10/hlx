@@ -30,7 +30,7 @@ export function Speaking({ data, title, baseKey }: SpeakingProps) {
       title={title}
       {...restProps}
     >
-      <Subject data={current} baseKey={baseKey} />
+      <Subject mediaFirst data={current} baseKey={baseKey} />
     </StudyContainer>
   );
 }
