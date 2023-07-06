@@ -37,7 +37,7 @@ export const routesConfig: RouteObject[] = [
     children: [
       { index: true, element: <Navigate to="textbook" replace /> },
       { path: 'textbook', element: <OwnTextbook />, breadcrumbName: '已选课程' },
-      { path: 'alltextbook', element: <AllTextbook />, breadcrumbName: '全部课程' },
+      { path: 'alltextbook', element: <AllTextbook />, breadcrumbName: '免费课程' },
       ...['textbook', 'alltextbook'].map((prefix) => ({
         path: `${prefix}/:type/:textbookId`,
         element: <Textbook />,
@@ -56,7 +56,7 @@ export const routesConfig: RouteObject[] = [
       })),
       { path: 'history', element: <StudyRecord />, breadcrumbName: '学习记录' },
       { path: 'feedback', element: <Feedback />, breadcrumbName: '师生互动' },
-      { path: 'exams', element: <ExamList />, breadcrumbName: '现在测评' },
+      { path: 'exams', element: <ExamList />, breadcrumbName: '现在测试' },
       { path: 'recordExam', element: <ExamRecord />, breadcrumbName: '测评记录' },
     ],
   },

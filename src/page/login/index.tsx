@@ -54,7 +54,7 @@ export function LoginPage() {
         </Box>
         <Tabs value={tab} onChange={(evt, newValue) => setTab(newValue)}>
           <Tab label="密码登录" value={0}></Tab>
-          <Tab label="手机登录" value={1}></Tab>
+          <Tab label="验证码登录" value={1}></Tab>
         </Tabs>
         {tab === 0 && (
           <AccountPassword login={loginMutation.mutate} isLoading={loginMutation.isLoading} />

@@ -16,7 +16,7 @@ interface Item {
 export const navList: Item[] = [
   {
     key: '/alltextbook',
-    label: '全部课程',
+    label: '免费课程',
     icon: <LibraryBooksIcon />,
   },
   {
@@ -31,7 +31,7 @@ export const navList: Item[] = [
   },
   {
     key: '/exams',
-    label: '现在测评',
+    label: '现在测试',
     icon: <ArticleIcon />,
   },
   {

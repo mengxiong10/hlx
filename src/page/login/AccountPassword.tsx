@@ -28,12 +28,12 @@ export function AccountPassword({ login, isLoading }: AccountPasswordProps) {
         variant="standard"
         required
         fullWidth
-        label="账号"
+        label="手机号"
         autoComplete="tel"
         autoFocus
         helperText={errors.username?.message}
         error={!!errors.username}
-        {...register('username', { required: '账号不能为空' })}
+        {...register('username', { required: '请输入手机号' })}
       ></TextField>
       <TextField
         margin="normal"

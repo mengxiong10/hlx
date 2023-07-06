@@ -8,6 +8,7 @@ interface UseStudyParams<T> extends UseStepParams<T> {
   validate?: (item: T) => boolean;
   isCorrect?: (item: T) => boolean | Promise<boolean>;
   needRestart?: boolean;
+  resetOnWrong?: boolean;
 }
 
 export function useStudy<T = unknown>({
@@ -16,6 +17,7 @@ export function useStudy<T = unknown>({
   needRestart = true,
   validateText = '请猜着答完各个问题',
   validate = () => false,
+  resetOnWrong = true,
   isCorrect,
 }: UseStudyParams<T>) {
   const [isWrong, setWrong] = useState(false);
@@ -55,7 +57,9 @@ export function useStudy<T = unknown>({
         submit();
       }
     } else {
-      reset?.(current);
+      if (resetOnWrong) {
+        reset?.(current);
+      }
       setWrong(true);
       if (needRestart && !wrongList.includes(current)) {
         setWrongList([...wrongList, current]);

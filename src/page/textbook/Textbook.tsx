@@ -15,7 +15,7 @@ export function Textbook() {
 
   const replaceBreadcrumbs = () => {
     return [
-      { path: `${prefix}?type=${type}`, name: prefix === '/textbook' ? '已选课程' : '全部课程' },
+      { path: `${prefix}?type=${type}`, name: prefix === '/textbook' ? '已选课程' : '免费课程' },
       { path: location.pathname, name: isObject(location.state) ? location.state.title : '' },
     ];
   };

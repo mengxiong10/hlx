@@ -20,6 +20,7 @@ export function WriteFullText({ data, title }: WriteFullTextProps) {
   const { current, isLoading, onConfirm, ...restProps } = useStudy({
     data,
     reset,
+    resetOnWrong: false,
     validateText: '答案不能为空',
     validate: () => value.trim() === '',
     isCorrect: (item) => isSameSentence(value, item.content),
