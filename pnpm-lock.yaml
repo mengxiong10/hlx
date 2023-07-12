@@ -17,6 +17,7 @@ specifiers:
   '@types/react': ^18.0.0
   '@types/react-dom': ^18.0.0
   '@types/react-infinite-scroller': ^1.2.3
+  '@types/wx-js-sdk-dt': ^1.4.5
   '@typescript-eslint/eslint-plugin': ^5.23.0
   '@typescript-eslint/parser': ^5.23.0
   '@vitejs/plugin-react': ^1.3.0
@@ -86,6 +87,7 @@ devDependencies:
   '@types/react': 18.0.15
   '@types/react-dom': 18.0.6
   '@types/react-infinite-scroller': 1.2.3
+  '@types/wx-js-sdk-dt': 1.4.5
   '@typescript-eslint/eslint-plugin': 5.30.6_2vt5mtrqleafs33qg2bhpmbaqm
   '@typescript-eslint/parser': 5.30.6_4x5o4skxv6sl53vpwefgt23khm
   '@vitejs/plugin-react': 1.3.2
@@ -1031,6 +1033,10 @@ packages:
   /@types/use-sync-external-store/0.0.3:
     resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
     dev: false
+
+  /@types/wx-js-sdk-dt/1.4.5:
+    resolution: {integrity: sha512-FAISF5TkSvVuDEe+zTuuZPcFj61OhwKOU9YNofAfbrKU+AAZk0Z1PVCjSSi8JcTxONjrb6eh2VWAziygFTaX9A==}
+    dev: true
 
   /@typescript-eslint/eslint-plugin/5.30.6_2vt5mtrqleafs33qg2bhpmbaqm:
     resolution: {integrity: sha512-J4zYMIhgrx4MgnZrSDD7sEnQp7FmhKNOaqaOpaoQ/SfdMfRB/0yvK74hTnvH+VQxndZynqs5/Hn4t+2/j9bADg==}

@@ -67,3 +67,17 @@ export interface ChangePwdParams {
 export function changePwd(params: ChangePwdParams) {
   return request.post('/student/changePwd', params);
 }
+
+export interface WxInfo {
+  appId: string;
+  timestamp: number;
+  nonceStr: string;
+  signature: string;
+  title?: string;
+  desc?: string;
+  imgUrl?: string;
+}
+
+export function getWxInfo(url: string) {
+  return request.post<any, WxInfo>('/wx/share', { url });
+}
