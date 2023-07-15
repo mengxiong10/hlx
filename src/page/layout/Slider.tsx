@@ -21,7 +21,7 @@ export const navList: Item[] = [
   },
   {
     key: '/textbook',
-    label: '已选课程',
+    label: '已报课程',
     icon: <MenuBookIcon />,
   },
   {
@@ -36,7 +36,7 @@ export const navList: Item[] = [
   },
   {
     key: '/recordExam',
-    label: '测评记录',
+    label: '测试记录',
     icon: <HistoryEduIcon />,
   },
   {

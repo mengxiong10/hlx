@@ -44,7 +44,7 @@ export function getAllTextbooks(params: { subType: TextbookType; page: number; s
 }
 
 /**
- * 获取已选课程
+ * 获取已报课程
  * @param type '001001' 是汉语 '001002' 是英语
  */
 export function getOwnTextbooks(subType = TextbookType.English) {
