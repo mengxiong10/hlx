@@ -70,8 +70,8 @@ export function changePwd(params: ChangePwdParams) {
 
 export interface WxInfo {
   appId: string;
-  timestamp: number;
-  nonceStr: string;
+  timestamp: string;
+  noncestr: string;
   signature: string;
   title?: string;
   desc?: string;
@@ -79,5 +79,9 @@ export interface WxInfo {
 }
 
 export function getWxInfo(url: string) {
-  return request.post<any, WxInfo>('/wx/share', { url });
+  return request.post<any, WxInfo>('/wx/share', url, {
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+  });
 }

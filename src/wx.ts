@@ -1,13 +1,17 @@
 import { getWxInfo } from './api/auth';
 
 export async function initWxConfig() {
-  const url = window.location.origin + window.location.pathname;
+  const url = window.location.href.split('#')[0];
 
   const info = await getWxInfo(url);
 
+  const { appId, timestamp, noncestr, signature } = info;
+
   wx.config({
-    ...info,
-    debug: true,
+    appId,
+    signature,
+    nonceStr: noncestr,
+    timestamp: +timestamp,
     jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'],
   });
 
