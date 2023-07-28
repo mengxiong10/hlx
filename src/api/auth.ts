@@ -74,7 +74,7 @@ export interface WxInfo {
   noncestr: string;
   signature: string;
   title?: string;
-  desc?: string;
+  des?: string;
   imgUrl?: string;
 }
 

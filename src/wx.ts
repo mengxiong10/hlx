@@ -19,7 +19,7 @@ export async function initWxConfig() {
     wx.updateAppMessageShareData({
       link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
       title: info.title || '慧来学', // 分享标题
-      desc: info.desc || '慧来学描述', // 分享描述
+      desc: info.des || '慧来学描述', // 分享描述
       imgUrl: info.imgUrl || '', // 分享图标
     });
 
