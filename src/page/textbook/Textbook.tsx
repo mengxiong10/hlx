@@ -1,4 +1,4 @@
-import { Tab, Tabs } from '@mui/material';
+import { Tab, Tabs, Tooltip } from '@mui/material';
 import { useCallback, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -40,11 +40,31 @@ export function Textbook() {
       <Tabs
         variant="scrollable"
         value={unitId || false}
-        onChange={(evt, value) => setUnitId(value)}
+        onChange={(evt, value) => {
+          if (value) {
+            setUnitId(value);
+          }
+        }}
       >
-        {units.map((item) => (
-          <Tab key={item.id} label={item.title} value={item.id} />
-        ))}
+        {units.map((item) => {
+          const isDisabled = item.enabled === '0';
+          return (
+            <Tab
+              key={item.id}
+              value={isDisabled ? '' : item.id}
+              sx={isDisabled ? { color: 'rgba(0,0,0,0.38)', cursor: 'not-allowed' } : {}}
+              label={
+                isDisabled ? (
+                  <Tooltip title="该课程未授权" placement="top-start">
+                    <span>{item.title}</span>
+                  </Tooltip>
+                ) : (
+                  item.title
+                )
+              }
+            />
+          );
+        })}
       </Tabs>
       <Outlet />
     </PageContainer>
