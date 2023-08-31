@@ -14,7 +14,11 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
       icon: <TranslateIcon fontSize="inherit" />,
       text: current.translation,
     },
-    { key: 'content', icon: <SourceIcon fontSize="inherit" />, text: current.content },
+    {
+      key: 'content',
+      icon: <SourceIcon fontSize="inherit" />,
+      text: current.content.replace(/_/g, ' '),
+    },
     { key: 'analysis', icon: <InfoIcon fontSize="inherit" />, text: current.analysis },
   ];
   return (

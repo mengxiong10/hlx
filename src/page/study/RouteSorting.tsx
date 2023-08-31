@@ -60,7 +60,7 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
               {...listeners}
               {...attributes}
             >
-              <Typography variant="study">{item.content}</Typography>
+              <Typography variant="study">{item.content.replace(/_/g, ' ')}</Typography>
             </Paper>
           )}
         ></Sortable>

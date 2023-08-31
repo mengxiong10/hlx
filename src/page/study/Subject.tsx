@@ -32,7 +32,7 @@ export function Subject<T extends Record<string, any>>({
     if (typeof value === 'string') {
       return (
         <Typography key={String(key)} variant="study" mb={1}>
-          {reactStringReplace(value, '#', () => {
+          {reactStringReplace(value.replace(/_/g, ' '), '#', () => {
             return (
               <Box
                 sx={{
