@@ -48,6 +48,7 @@ export function login(params: LoginByPassParams | LoginByCodeParams) {
 export interface RegisterParams {
   realName: string;
   gander: string; // '1' | '2' 男 1 女 2
+  inviterCode?: string;
 }
 
 export function registerUser(params: RegisterParams) {
@@ -76,6 +77,7 @@ export interface WxInfo {
   title?: string;
   des?: string;
   imgUrl?: string;
+  inviteCode: string;
 }
 
 export function getWxInfo(url: string) {

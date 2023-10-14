@@ -24,6 +24,8 @@ export function RegisterPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const params = new URLSearchParams(window.location.search);
+
   const {
     register,
     handleSubmit,
@@ -33,6 +35,7 @@ export function RegisterPage() {
     defaultValues: {
       gander: '1',
       realName: '',
+      inviterCode: params.get('inviteCode') || undefined,
     },
   });
 
