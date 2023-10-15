@@ -1,24 +1,17 @@
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Badge,
-  Menu,
-  MenuItem,
-  Avatar,
-  Divider,
-  Link,
-} from '@mui/material';
+import { AppBar, Toolbar, IconButton, Menu, MenuItem, Avatar, Divider, Link } from '@mui/material';
 import logo from 'src/assets/image/logo.png';
 import { Notifications } from '@mui/icons-material';
 import { useState } from 'react';
 import { auth } from 'src/auth/auth';
 import { useUser } from 'src/auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { Dept } from '../profile/Dept';
 import { Password } from '../profile/Password';
+import { MessageCount } from '../message/count';
 
 export function Header({ children }: { children?: React.ReactNode }) {
   const user = useUser()!;
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -28,6 +21,10 @@ export function Header({ children }: { children?: React.ReactNode }) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleMessage = () => {
+    navigate('message');
   };
 
   const [deptVisible, setDeptVisible] = useState(false);
@@ -57,10 +54,10 @@ export function Header({ children }: { children?: React.ReactNode }) {
           }}
         ></Link>
         <span style={{ flex: '1 1 0%' }}></span>
-        <IconButton size="large" color="inherit">
-          <Badge badgeContent={0} color="error">
+        <IconButton size="large" color="inherit" onClick={handleMessage}>
+          <MessageCount>
             <Notifications />
-          </Badge>
+          </MessageCount>
         </IconButton>
         <IconButton
           size="large"

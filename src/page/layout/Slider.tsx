@@ -3,13 +3,15 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import HistoryIcon from '@mui/icons-material/History';
 import ArticleIcon from '@mui/icons-material/Article';
+import MailIcon from '@mui/icons-material/Mail';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { List, ListItemButton, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { MessageCount } from '../message/count';
 
 interface Item {
   key: string;
-  label: string;
+  label: React.ReactNode;
   icon?: React.ReactNode;
 }
 
@@ -43,6 +45,11 @@ export const navList: Item[] = [
     key: '/feedback',
     label: '师生互动',
     icon: <HistoryIcon />,
+  },
+  {
+    key: '/message',
+    label: <MessageCount>系统通知</MessageCount>,
+    icon: <MailIcon />,
   },
 ];
 

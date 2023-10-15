@@ -7,7 +7,7 @@ export interface BreadcrumbsProps {
 }
 
 export interface BreadcrumbLink {
-  name: string;
+  name: string | React.ReactNode;
   path: string;
 }
 

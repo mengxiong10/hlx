@@ -14,10 +14,11 @@ import { ExamList } from './page/examList';
 import { ExamDetail } from './page/exam';
 import { ExamRecord } from './page/examRecord';
 import { RegisterPage } from './page/login/Register';
+import { MessageList } from './page/message';
 
 declare module 'react-router-dom' {
   interface RouteObject {
-    breadcrumbName?: string;
+    breadcrumbName?: string | React.ReactNode;
   }
 }
 
@@ -66,6 +67,11 @@ export const routesConfig: RouteObject[] = [
           { path: 'feedback', element: <Feedback />, breadcrumbName: '师生互动' },
           { path: 'exams', element: <ExamList />, breadcrumbName: '现在测试' },
           { path: 'recordExam', element: <ExamRecord />, breadcrumbName: '测试记录' },
+          {
+            path: 'message',
+            element: <MessageList />,
+            breadcrumbName: '系统通知',
+          },
         ],
       },
     ],
