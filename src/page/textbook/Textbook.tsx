@@ -5,6 +5,7 @@ import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getTextbookUnit } from 'src/api/textbook';
 import { isObject } from 'src/util';
 import { PageContainer } from '../layout/PageContainer';
+import { Payment } from './Payment';
 
 export function Textbook() {
   const location = useLocation();
@@ -36,7 +37,7 @@ export function Textbook() {
   }, [unitId, units]);
 
   return (
-    <PageContainer replaceBreadcrumbs={replaceBreadcrumbs}>
+    <PageContainer replaceBreadcrumbs={replaceBreadcrumbs} action={<Payment id={textbookId!} />}>
       <Tabs
         variant="scrollable"
         value={unitId || false}
