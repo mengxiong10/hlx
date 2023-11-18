@@ -2,7 +2,7 @@ import { Tab, Tabs, Tooltip } from '@mui/material';
 import { useCallback, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getTextbookUnit } from 'src/api/textbook';
+import { getTextBookDetail, getTextbookUnit } from 'src/api/textbook';
 import { isObject } from 'src/util';
 import { PageContainer } from '../layout/PageContainer';
 import { Payment } from './Payment';
@@ -14,16 +14,25 @@ export function Textbook() {
 
   const prefix = location.pathname.match(/^\/\w+/)![0];
 
+  const textbookUnits = useQuery(['textbookUnits', textbookId], () => getTextbookUnit(textbookId!));
+
+  const textbookDetail = useQuery(['textbookDetail', textbookId], () =>
+    getTextBookDetail(textbookId!)
+  );
+
+  const units = textbookUnits.data || [];
+
   const replaceBreadcrumbs = () => {
     return [
       { path: `${prefix}?type=${type}`, name: prefix === '/textbook' ? '已报课程' : '免费课程' },
-      { path: location.pathname, name: isObject(location.state) ? location.state.title : '' },
+      {
+        path: location.pathname,
+        name:
+          textbookDetail.data?.qsTextbook.qsName ??
+          (isObject(location.state) ? location.state.title : ''),
+      },
     ];
   };
-
-  const textbook = useQuery(['textbook', textbookId], () => getTextbookUnit(textbookId!));
-
-  const units = textbook.data || [];
 
   const setUnitId = useCallback((id: string) => {
     navigate(`unit/${id}`, { replace: true, state: location.state });
@@ -37,7 +46,10 @@ export function Textbook() {
   }, [unitId, units]);
 
   return (
-    <PageContainer replaceBreadcrumbs={replaceBreadcrumbs} action={<Payment id={textbookId!} />}>
+    <PageContainer
+      replaceBreadcrumbs={replaceBreadcrumbs}
+      action={textbookDetail.data?.isAuth === 1 ? null : <Payment id={textbookId!} />}
+    >
       <Tabs
         variant="scrollable"
         value={unitId || false}
