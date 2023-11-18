@@ -80,6 +80,7 @@ export function Header({ children }: { children?: React.ReactNode }) {
           }}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          onClick={handleClose}
         >
           <MenuItem dense>{user.username}</MenuItem>
           <MenuItem dense onClick={() => setDeptVisible(true)}>
@@ -87,6 +88,9 @@ export function Header({ children }: { children?: React.ReactNode }) {
           </MenuItem>
           <MenuItem dense onClick={() => setChangePwdVisible(true)}>
             修改密码
+          </MenuItem>
+          <MenuItem dense onClick={() => navigate('rebate')}>
+            个人积分
           </MenuItem>
           <Divider />
           <MenuItem dense onClick={() => auth.clear()}>

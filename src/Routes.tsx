@@ -15,6 +15,7 @@ import { ExamDetail } from './page/exam';
 import { ExamRecord } from './page/examRecord';
 import { RegisterPage } from './page/login/Register';
 import { MessageList } from './page/message';
+import { Rebate } from './page/rebate';
 
 declare module 'react-router-dom' {
   interface RouteObject {
@@ -71,6 +72,11 @@ export const routesConfig: RouteObject[] = [
             path: 'message',
             element: <MessageList />,
             breadcrumbName: '系统通知',
+          },
+          {
+            path: 'rebate',
+            element: <Rebate />,
+            breadcrumbName: '个人积分',
           },
         ],
       },

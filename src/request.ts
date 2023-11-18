@@ -22,7 +22,8 @@ request.interceptors.request.use((config) => {
 
 request.interceptors.response.use(
   (res) => {
-    const { data } = res;
+    const { data, config } = res;
+    if (/\/rebate\//.test(config.url || '')) return data;
     if (Object.prototype.hasOwnProperty.call(data, 'respResult') && data.respResult === 'success') {
       return data.respBody;
     }
