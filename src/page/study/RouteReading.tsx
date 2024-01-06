@@ -24,7 +24,6 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
   return (
     <>
       <MediaList
-        defaultIndex={-1}
         key={current.id}
         attach={[current.imageAttach, current.audioAttach, current.videoAttach]}
       ></MediaList>
@@ -49,7 +48,7 @@ export function Reading({ data, title }: { data: ReadInfo[]; title: string }) {
   const { current, ...restProps } = useStudy({ data });
 
   return (
-    <StudyContainer title={title} {...restProps}>
+    <StudyContainer title={title} confirmText="知道了" {...restProps}>
       <ReadingContent current={current} />
     </StudyContainer>
   );

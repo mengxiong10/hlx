@@ -11,9 +11,10 @@ export interface AudioRecorderProps {
   url?: string; // 标准音频
   value?: Blob;
   onChange: (value?: Blob) => void;
+  disabled?: boolean;
 }
 
-export function AudioRecorder({ url, value, onChange }: AudioRecorderProps) {
+export function AudioRecorder({ url, value, onChange, disabled = false }: AudioRecorderProps) {
   const [recordState, setRecordState] = useState<RecordingState>('inactive');
   const [time, setTime] = useState(0);
   const [audioState, setAudioState] = useState('');
@@ -103,6 +104,12 @@ export function AudioRecorder({ url, value, onChange }: AudioRecorderProps) {
     };
   }, [value, url]);
 
+  useEffect(() => {
+    if (disabled) {
+      audioEl.pause();
+    }
+  }, [disabled, audioEl]);
+
   const mm = padStart(String((time / 60) | 0), 2, '0');
   const ss = padStart(String(time % 60), 2, '0');
 
@@ -118,7 +125,7 @@ export function AudioRecorder({ url, value, onChange }: AudioRecorderProps) {
             <PlayArrowIcon fontSize="large" />
           )
         }
-        disabled={!value}
+        disabled={!value || disabled}
         onClick={togglePlay}
       >
         {audioState === 'play' ? '暂停' : '播放'}

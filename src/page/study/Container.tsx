@@ -1,4 +1,4 @@
-import { Paper, Container, Stack, Button, ButtonProps } from '@mui/material';
+import { Paper, Container, Stack, Button, ButtonProps, Box } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { Header } from 'src/component/Header';
 import { DialogFullscreen } from 'src/component/DialogFullscreen';
@@ -45,9 +45,9 @@ export function StudyContainer({
   return (
     <Paper sx={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <Header primary title={headerTitle}></Header>
-      <Container maxWidth="lg" sx={{ flex: 1, overflow: 'auto', py: 4 }}>
-        {children}
-      </Container>
+      <Box sx={{ flex: 1, overflow: 'auto', py: 4 }}>
+        <Container maxWidth="lg">{children}</Container>
+      </Box>
       <Stack
         p={2}
         spacing={2}

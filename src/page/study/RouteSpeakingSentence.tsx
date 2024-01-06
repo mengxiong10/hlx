@@ -40,15 +40,22 @@ export function SpeakingSentence({ data, title, baseKey }: SpeakingProps) {
     isCorrect,
   });
 
+  const isComfirmLoading = isLoading || sentenceMutation.isLoading;
+
   return (
     <StudyContainer
       footer={
-        <AudioRecorder onChange={setAudio} value={audio} url={current.audioAttach?.attachUrl} />
+        <AudioRecorder
+          disabled={isComfirmLoading}
+          onChange={setAudio}
+          value={audio}
+          url={current.audioAttach?.attachUrl}
+        />
       }
       confirmProps={{ disabled: !audio }}
       confirmText="提交"
       title={title}
-      isLoading={isLoading || sentenceMutation.isLoading}
+      isLoading={isComfirmLoading}
       tips={
         <SpeakingSentenceTip
           audioAttach={current.audioAttach}

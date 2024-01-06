@@ -11,7 +11,6 @@ export interface SubjectProps<T extends Record<string, any>> {
   mediaId?: string;
   data: T;
   baseKey: SubjectBaseKeys<T>;
-  defaultIndex?: number;
   mediaFirst?: boolean;
 }
 
@@ -19,7 +18,6 @@ export function Subject<T extends Record<string, any>>({
   data,
   mediaId = 'id',
   baseKey,
-  defaultIndex,
   mediaFirst = false,
 }: SubjectProps<T>) {
   const keys = Array.isArray(baseKey) ? baseKey : [baseKey];
@@ -52,11 +50,7 @@ export function Subject<T extends Record<string, any>>({
   });
 
   const media = attachArray.length ? (
-    <MediaList
-      key={data[mediaId]}
-      attach={attachArray.map((v) => data[v])}
-      defaultIndex={defaultIndex}
-    />
+    <MediaList key={data[mediaId]} attach={attachArray.map((v) => data[v])} />
   ) : null;
 
   if (mediaFirst) {

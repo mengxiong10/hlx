@@ -57,7 +57,14 @@ export function SpeakingFullText({ data, title }: SpeakingFullTextProps) {
       title={title}
       confirmProps={{ disabled: editable && !audio }}
       footer={
-        editable ? <AudioRecorder value={audio} onChange={setAudio} key={current.id} /> : undefined
+        editable ? (
+          <AudioRecorder
+            disabled={isLoading || sentenceMutation.isLoading}
+            value={audio}
+            onChange={setAudio}
+            key={current.id}
+          />
+        ) : undefined
       }
       isLoading={isLoading || sentenceMutation.isLoading}
       onConfirm={editable ? onConfirm : () => setEditable(true)}
