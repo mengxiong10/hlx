@@ -3,6 +3,7 @@ import { Box, TextField } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { useForm } from 'react-hook-form';
 import { LoginByPassParams } from 'src/api/auth';
+import { isDev } from "src/env";
 
 export interface AccountPasswordProps {
   login: (values: LoginByPassParams) => void;
@@ -15,10 +16,10 @@ export function AccountPassword({ login, isLoading }: AccountPasswordProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginByPassParams>({
-    defaultValues: {
+    defaultValues: isDev ? {
       username: '13607148408',
       pass: '123456',
-    },
+    } : {},
   });
 
   return (
