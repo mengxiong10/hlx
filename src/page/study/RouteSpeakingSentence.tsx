@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { checkVoice, SpeakingInfo } from 'src/api/study';
-import { AudioRecorder } from 'src/component/AudioRecorder';
 import { blobToBase64 } from 'src/util';
 import { StudyContainer } from './Container';
 import { SpeakingSentenceTip } from './SpeakingSentenceTip';
 import { Subject, SubjectBaseKeys } from './Subject';
 import { useStudy } from './useStudy';
+import { AudioSpeaking } from './AudioSpeaking';
 
 interface SpeakingProps {
   data: SpeakingInfo[];
@@ -45,7 +45,7 @@ export function SpeakingSentence({ data, title, baseKey }: SpeakingProps) {
   return (
     <StudyContainer
       footer={
-        <AudioRecorder
+        <AudioSpeaking
           disabled={isComfirmLoading}
           onChange={setAudio}
           value={audio}

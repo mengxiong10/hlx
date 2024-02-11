@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { SpeakingInfo } from 'src/api/study';
-import { AudioRecorder } from 'src/component/AudioRecorder';
 import { StudyContainer } from './Container';
 import { Subject, SubjectBaseKeys } from './Subject';
 import { useStudy } from './useStudy';
+import { AudioSpeaking } from './AudioSpeaking';
 
 interface SpeakingProps {
   data: SpeakingInfo[];
@@ -24,7 +24,7 @@ export function Speaking({ data, title, baseKey }: SpeakingProps) {
   return (
     <StudyContainer
       footer={
-        <AudioRecorder value={audio} onChange={setAudio} url={current.audioAttach?.attachUrl} />
+        <AudioSpeaking value={audio} onChange={setAudio} url={current.audioAttach?.attachUrl} />
       }
       confirmText="读的不错"
       title={title}

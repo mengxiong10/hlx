@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { checkVoice, FullTextInfo } from 'src/api/study';
-import { AudioRecorder } from 'src/component/AudioRecorder';
 import { blobToBase64 } from 'src/util';
 import { StudyContainer } from './Container';
 import { SpeakingSentenceTip } from './SpeakingSentenceTip';
 import { useStudy } from './useStudy';
+import { AudioSpeaking } from './AudioSpeaking';
 
 interface SpeakingFullTextProps {
   data: FullTextInfo[];
@@ -58,7 +58,7 @@ export function SpeakingFullText({ data, title }: SpeakingFullTextProps) {
       confirmProps={{ disabled: editable && !audio }}
       footer={
         editable ? (
-          <AudioRecorder
+          <AudioSpeaking
             disabled={isLoading || sentenceMutation.isLoading}
             value={audio}
             onChange={setAudio}

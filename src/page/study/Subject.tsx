@@ -29,7 +29,7 @@ export function Subject<T extends Record<string, any>>({
     const value = data[key];
     if (typeof value === 'string') {
       return (
-        <Typography key={String(key)} variant="study" mb={1}>
+        <Typography key={String(key)} variant="study" mb={1} mt={1}>
           {reactStringReplace(value.replace(/_/g, ' '), '#', () => {
             return (
               <Box
