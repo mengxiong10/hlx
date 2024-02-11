@@ -27,7 +27,7 @@ export function MediaList({ attach }: MediaListProps) {
   };
 
   return (
-    <Box>
+    <Box mb={1} mt={1}>
       <Stack spacing={2} alignItems="center">
         {audioAttach && (
           <audio
@@ -47,7 +47,7 @@ export function MediaList({ attach }: MediaListProps) {
             src={videoAttach.attachUrl}
           />
         )}
-        {imageAttach && (
+        {!videoAttach && imageAttach && (
           <img
             style={{ maxWidth: '100%' }}
             // style={{ display: type === AttachType.Image ? 'block' : 'none', maxWidth: 300 }}

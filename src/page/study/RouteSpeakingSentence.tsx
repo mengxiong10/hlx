@@ -38,6 +38,7 @@ export function SpeakingSentence({ data, title, baseKey }: SpeakingProps) {
     validateText: '请先录音',
     validate: () => audio === undefined,
     isCorrect,
+    reset: () => setAudio(undefined),
   });
 
   const isComfirmLoading = isLoading || sentenceMutation.isLoading;

@@ -20,7 +20,7 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
       text: current.content.replace(/_/g, ' '),
     },
     { key: 'analysis', icon: <InfoIcon fontSize="inherit" />, text: current.analysis },
-  ];
+  ].filter(v => !!v.text);
   return (
     <>
       <MediaList
@@ -30,7 +30,7 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
       <List>
         {content.map((item) => (
           <ListItem key={item.key} alignItems="flex-start">
-            <ListItemIcon sx={{ color: 'primary.main', typography: 'study' }}>
+            <ListItemIcon sx={{ color: 'primary.main', typography: 'study', minWidth: '28px' }}>
               {item.icon}
             </ListItemIcon>
             <ListItemText

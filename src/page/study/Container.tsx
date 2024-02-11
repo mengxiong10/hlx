@@ -54,7 +54,7 @@ export function StudyContainer({
         direction="row"
         justifyContent="center"
         alignItems="center"
-        flexWrap="wrap"
+        flexWrap="nowrap"
       >
         <>
           {footer}

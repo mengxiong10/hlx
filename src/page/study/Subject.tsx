@@ -55,16 +55,16 @@ export function Subject<T extends Record<string, any>>({
 
   if (mediaFirst) {
     return (
-      <>
+      <Box mb={2}>
         {media}
         {paras}
-      </>
+      </Box>
     );
   }
   return (
-    <>
+    <Box mb={2}>
       {paras}
       {media}
-    </>
+    </Box>
   );
 }

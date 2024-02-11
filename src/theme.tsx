@@ -53,6 +53,7 @@ const theme = createTheme({
   typography: {
     button: {
       textTransform: 'none',
+      whiteSpace: 'nowrap'
     },
   },
   palette: {
@@ -94,12 +95,12 @@ theme.typography.study = {
   fontSize: '1rem',
   whiteSpace: 'pre-wrap',
   userSelect: 'none',
-  [theme.breakpoints.up('sm')]: {
-    fontSize: '1.5rem',
-  },
-  [theme.breakpoints.up('lg')]: {
-    fontSize: '1.5rem',
-  },
+  // [theme.breakpoints.up('sm')]: {
+  //   fontSize: '1.5rem',
+  // },
+  // [theme.breakpoints.up('lg')]: {
+  //   fontSize: '1.5rem',
+  // },
 };
 
 export function Theme({ children }: { children: React.ReactNode }) {
