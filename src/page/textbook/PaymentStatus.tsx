@@ -55,10 +55,8 @@ export function PaymentStatus({ codeUrl, orderNo, product, onClose, open }: Paym
 
   return (
     <Dialog fullWidth maxWidth="sm" open={open} onClose={onClose}>
-      <DialogTitle>购买课程</DialogTitle>
       <DialogContent>
         {`${product.title} ${product.price}元`}
-        <Typography>扫描下方二维码支付</Typography>
         <img src={codeImg} alt="" />
         {/* <QRCodeCanvas value={codeUrl} /> */}
       </DialogContent>

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Dept } from '../profile/Dept';
 import { Password } from '../profile/Password';
 import { MessageCount } from '../message/count';
+import { EmailBind } from '../profile/Email';
 
 export function Header({ children }: { children?: React.ReactNode }) {
   const user = useUser()!;
@@ -29,6 +30,8 @@ export function Header({ children }: { children?: React.ReactNode }) {
 
   const [deptVisible, setDeptVisible] = useState(false);
   const [changePwdVisible, setChangePwdVisible] = useState(false);
+  const [changeEmailVisible, setChangeEmailVisible] = useState(false);
+
   const deptTitle = '选择部门';
 
   return (
@@ -89,8 +92,11 @@ export function Header({ children }: { children?: React.ReactNode }) {
           <MenuItem dense onClick={() => setChangePwdVisible(true)}>
             修改密码
           </MenuItem>
+          <MenuItem dense onClick={() => setChangeEmailVisible(true)}>
+            现在签约
+          </MenuItem>
           <MenuItem dense onClick={() => navigate('rebate')}>
-            个人积分
+            我的奖金
           </MenuItem>
           <Divider />
           <MenuItem dense onClick={() => auth.clear()}>
@@ -98,7 +104,12 @@ export function Header({ children }: { children?: React.ReactNode }) {
           </MenuItem>
         </Menu>
         <Dept title={deptTitle} open={deptVisible} onClose={() => setDeptVisible(false)}></Dept>
-        <Password open={changePwdVisible} onClose={() => setChangePwdVisible(false)} />
+        {changePwdVisible && (
+          <Password open={changePwdVisible} onClose={() => setChangePwdVisible(false)} />
+        )}
+        {changeEmailVisible && (
+          <EmailBind open={changeEmailVisible} onClose={() => setChangeEmailVisible(false)} />
+        )}
       </Toolbar>
     </AppBar>
   );

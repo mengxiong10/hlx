@@ -53,7 +53,7 @@ export function Payment({ id }: PaymentProps) {
   return (
     <>
       <LoadingButton loading={isLoading} onClick={handlePayment}>
-        购买课程
+        我要报课
       </LoadingButton>
       {info && (
         <PaymentStatus

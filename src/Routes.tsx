@@ -76,7 +76,7 @@ export const routesConfig: RouteObject[] = [
           {
             path: 'rebate',
             element: <Rebate />,
-            breadcrumbName: '个人积分',
+            breadcrumbName: '我的奖金',
           },
         ],
       },

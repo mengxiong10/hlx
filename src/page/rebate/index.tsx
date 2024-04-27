@@ -35,22 +35,22 @@ export function Rebate() {
         <Box
           sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 1.5 }}
         >
-          <Typography variant="body1">您的总积分: {total}</Typography>
+          <Typography variant="body1">总额 (元) : {total}</Typography>
           <Button variant="contained" disabled={total === 0} onClick={() => setOpen(true)}>
             提现
           </Button>
         </Box>
 
         <Paper sx={{ m: 1.5 }}>
-          <Typography variant="body1" p={2} bgcolor="#f7f7f8">
+          {/* <Typography variant="body1" p={2} bgcolor="#f7f7f8">
             积分详情
-          </Typography>
+          </Typography> */}
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>创建时间</TableCell>
-                <TableCell align="right">佣金</TableCell>
+                <TableCell>奖励时间</TableCell>
                 <TableCell align="right">被邀请人</TableCell>
+                <TableCell align="right">我的奖金</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -59,8 +59,9 @@ export function Rebate() {
                   <TableCell component="th" scope="row">
                     {dayjs(row.create_time).format('YYYY/MM/DD')}
                   </TableCell>
-                  <TableCell align="right">{row.rebate_change}</TableCell>
                   <TableCell align="right">{row.invitee_name}</TableCell>
+
+                  <TableCell align="right">{row.rebate_change}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
