@@ -18,7 +18,10 @@ import { MessageList } from './page/message';
 import { Rebate } from './page/rebate';
 
 declare module 'react-router-dom' {
-  interface RouteObject {
+  interface NonIndexRouteObject {
+    breadcrumbName?: string | React.ReactNode;
+  }
+  interface IndexRouteObject {
     breadcrumbName?: string | React.ReactNode;
   }
 }

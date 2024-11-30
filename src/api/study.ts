@@ -36,7 +36,7 @@ export interface ReadInfo {
   sort: string;
   content: string;
   translation: string;
-  analysis: string;
+  analysis?: string;
   audioAttach?: Attach;
   imageAttach?: Attach;
   videoAttach?: Attach;
