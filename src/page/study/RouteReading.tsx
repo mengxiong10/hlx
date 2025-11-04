@@ -16,7 +16,7 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
   } = {
     key: 'translation',
     icon: <TranslateIcon fontSize="inherit" />,
-    text: current.translation.split('/'),
+    text: current.translation?.split('/'),
   };
   const content = {
     key: 'content',
@@ -30,7 +30,7 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
     text: current.analysis,
   };
 
-  const list = [translation, content, analysis];
+  const list = [analysis, translation, content];
 
   const root = useRef(null);
 
@@ -76,7 +76,7 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
                     ? item.text.map((v, i) => {
                         const text = (
                           <span
-                            style={{ display: 'inline-block', textAlign: 'center' }}
+                            style={{ display: 'inline-block' }}
                             className={`js-width-${item.key}`}
                           >
                             {v}
