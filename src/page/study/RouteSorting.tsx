@@ -1,6 +1,6 @@
 import { verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Box, Paper, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SortingInfo } from 'src/api/study';
 import { Sortable } from 'src/component/Sortable';
 import { Subject, SubjectBaseKeys } from './Subject';
@@ -39,6 +39,37 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
 
   const items = value || current.options.map((v) => ({ id: v.value, content: v.content }));
 
+  // 创建音频播放器实例
+  const [audio] = useState(() => new Audio());
+
+  // 组件卸载时清理音频
+  useEffect(() => {
+    return () => {
+      audio.pause();
+    };
+  }, [audio]);
+
+  // 处理鼠标移入事件，播放对应文字块的音频
+  const handleMouseEnter = (itemId: string) => {
+    // 根据 itemId 找到对应的 SortOption
+    const option = current.options.find((opt) => opt.value === itemId);
+    if (option?.attachUrl) {
+      audio.pause();
+      audio.loop = false;
+      audio.src = option.attachUrl;
+      // 如果播放失败（如网络问题），静默处理，不影响其他功能
+      audio
+        .play()
+        .then(() => {
+          console.log('played');
+        })
+        .catch((err) => {
+          console.error(err);
+          // 静默处理播放失败
+        });
+    }
+  };
+
   return (
     <StudyContainer
       tips={vertical ? undefined : <ReadingContent current={current} />}
@@ -59,6 +90,7 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
               sx={vertical ? { p: '0.5em', my: 1 } : { p: '0.5em', mr: '1px' }}
               {...listeners}
               {...attributes}
+              onMouseEnter={() => handleMouseEnter(item.id)}
             >
               <Typography variant="study">{item.content.replace(/_/g, ' ')}</Typography>
             </Paper>

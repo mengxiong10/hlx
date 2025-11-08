@@ -22,6 +22,7 @@ export interface SortOption {
   content: string;
   value: string; // 对的顺序
   sort: string; // 乱的顺序
+  attachUrl?: string;
 }
 
 export interface SelectOption {
