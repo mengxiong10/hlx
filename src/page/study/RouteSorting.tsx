@@ -87,7 +87,7 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
               variant="outlined"
               ref={setNodeRef}
               style={style}
-              sx={vertical ? { p: '0.5em', my: 1 } : { p: '0.5em', mr: '1px' }}
+              sx={vertical ? { p: '0.5em', my: 1 } : { p: '0.5em', pl: '0', pr: '0', mr: '1px' }}
               {...listeners}
               {...attributes}
               onMouseEnter={() => handleMouseEnter(item.id)}

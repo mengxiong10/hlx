@@ -60,7 +60,7 @@ export function Feedback() {
       >
         {list.map((item) => (
           <Card key={item.id} sx={{ m: 1.5 }} elevation={1}>
-            <CardContent>
+            <CardContent style={{ padding: '1px' }}>
               <Typography sx={{ fontSize: 14 }} color="text.secondary">
                 {item.createTime}
               </Typography>
@@ -68,7 +68,7 @@ export function Feedback() {
                 {item.recontent || '空'}
               </Typography>
               {item.response && (
-                <CardContent sx={{ bgcolor: 'grey.100', mt: 1 }}>
+                <CardContent sx={{ bgcolor: 'grey.100', mt: 1 }} style={{ padding: '1px' }}>
                   <Typography sx={{ fontSize: 14 }} color="text.secondary">
                     {item.updateTime}
                   </Typography>
