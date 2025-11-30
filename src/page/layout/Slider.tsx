@@ -2,9 +2,9 @@
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import HistoryIcon from '@mui/icons-material/History';
-import ArticleIcon from '@mui/icons-material/Article';
+// import ArticleIcon from '@mui/icons-material/Article';
 import MailIcon from '@mui/icons-material/Mail';
-import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+// import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { List, ListItemButton, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { MessageCount } from '../message/count';
@@ -31,16 +31,16 @@ export const navList: Item[] = [
     label: '学习记录',
     icon: <HistoryIcon />,
   },
-  {
-    key: '/exams',
-    label: '现在测试',
-    icon: <ArticleIcon />,
-  },
-  {
-    key: '/recordExam',
-    label: '测试记录',
-    icon: <HistoryEduIcon />,
-  },
+  // {
+  //   key: '/exams',
+  //   label: '现在测试',
+  //   icon: <ArticleIcon />,
+  // },
+  // {
+  //   key: '/recordExam',
+  //   label: '测试记录',
+  //   icon: <HistoryEduIcon />,
+  // },
   {
     key: '/feedback',
     label: '师生互动',
