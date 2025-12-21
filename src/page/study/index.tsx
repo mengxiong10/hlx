@@ -39,7 +39,9 @@ const map: {
   [StepValue.SortSentenceByAudio]: (
     <Sorting title="据音排句" data={[]} vertical baseKey="audioAttach" />
   ), // 无提示 无错题
-  [StepValue.SortWordByAudio]: <Sorting title="据音排词" data={[]} baseKey="audioAttach" />, // 提示为看和听 错题重来
+  [StepValue.SortWordByAudio]: (
+    <Sorting title="据音排词" data={[]} baseKey={['audioAttach', 'translation']} />
+  ), // 提示为看和听 错题重来
   [StepValue.SortWordByTranslation]: <Sorting title="据译排词" data={[]} baseKey="translation" />, // 提示为看和听 错题重来
 
   [StepValue.Selection]: (

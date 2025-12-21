@@ -76,7 +76,7 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
       title={title}
       {...restProps}
     >
-      {baseKey && <Subject data={current} baseKey={baseKey} />}
+      {baseKey && <Subject data={current} baseKey={baseKey} mediaFirst />}
       <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: vertical ? 'column' : 'row' }}>
         <Sortable
           strategy={vertical ? verticalListSortingStrategy : undefined}

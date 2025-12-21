@@ -35,7 +35,7 @@ request.interceptors.response.use(
     if (err.response?.status === 401) {
       auth.clear();
     }
-    enqueueSnackbar(msg, { variant: 'error' });
+    // enqueueSnackbar(msg, { variant: 'error' });
     return Promise.reject(new Error(`:( ${msg}`));
   }
 );

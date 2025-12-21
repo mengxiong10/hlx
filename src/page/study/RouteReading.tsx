@@ -16,18 +16,18 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
   } = {
     key: 'translation',
     icon: <TranslateIcon fontSize="inherit" />,
-    text: current.translation?.split('/'),
+    text: current.translation?.split('/').map((item) => item.replace(/_/g, ' ')),
   };
   const content = {
     key: 'content',
     icon: <SourceIcon fontSize="inherit" />,
-    text: current.content?.replace(/_/g, ' ').split(/\s{2,}/),
+    text: current.content?.split(/\s{2,}/).map((item) => item.replace(/_/g, ' ')),
   };
 
   const analysis = {
     key: 'analysis',
     icon: <InfoIcon fontSize="inherit" />,
-    text: current.analysis,
+    text: current.analysis?.replace(/_/g, ' '),
   };
 
   const list = [analysis, translation, content];
@@ -60,7 +60,7 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
   return (
     <>
       <MediaList
-        key={current.id}
+        key={`${current.id}_media`}
         attach={[current.imageAttach, current.audioAttach, current.videoAttach]}
       ></MediaList>
       <List ref={root} key={current.id}>
@@ -103,9 +103,10 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
 
 export function Reading({ data, title }: { data: ReadInfo[]; title: string }) {
   const { current, ...restProps } = useStudy({
-    data: data.filter(
-      (item) => /\s{2,}/.test(item.content) || item.imageAttach || item.videoAttach
-    ),
+    // data: data.filter(
+    //   (item) => /\s{2,}/.test(item.content) || item.imageAttach || item.videoAttach
+    // ),
+    data,
   });
 
   return (
