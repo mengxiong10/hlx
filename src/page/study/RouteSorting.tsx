@@ -25,6 +25,7 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
     data,
     reset,
     needRestart,
+    resetOnWrong: false,
     isCorrect: (item) => {
       // 会有 content 一样的选项, 直接对比整个字符串
       const result = item.options
