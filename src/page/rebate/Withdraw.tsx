@@ -28,22 +28,6 @@ export function Withdraw({ open, onClose, onSuccess }: WithdrawProps) {
     }
   }, [open, user?.phone]);
 
-export function Withdraw({ open, onClose, onSuccess }: WithdrawProps) {
-  const [amount, setAmount] = useState<string>('');
-  const [wechatAccount, setWechatAccount] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const { enqueueSnackbar } = useSnackbar();
-  const queryClient = useQueryClient();
-  const totalRebateQuery = queryClient.getQueryData<number>(['totalRebate']);
-  const user = useUser();
-
-  // 当对话框打开时，设置默认微信号为手机号
-  useEffect(() => {
-    if (open && user?.phone) {
-      setWechatAccount(user.phone);
-    }
-  }, [open, user?.phone]);
-
   const withdrawMutation = useMutation(
     ({ amount, wechatAccount }: { amount: number; wechatAccount: string }) => applyWithdraw(amount, wechatAccount),
     {

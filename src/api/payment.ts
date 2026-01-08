@@ -34,7 +34,3 @@ export function getPaymentOrderInfo(orderId: string) {
 export function refreshOrderStatus(orderNo: string) {
   return request.post<any, string>(`/payment/order-info/refresh-order-status/${orderNo}`);
 }
-
-export function refreshOrderStatus(orderNo: string) {
-  return request.post<any, string>(`/payment/order-info/refresh-order-status/${orderNo}`);
-}
