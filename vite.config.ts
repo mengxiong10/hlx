@@ -21,4 +21,14 @@ export default defineConfig({
     },
   },
   plugins: [svgr({ exportAsDefault: true }), react(), splitVendorChunkPlugin()],
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message?.includes('use client')) {
+          return;
+        }
+        warn(warning);
+      },
+    },
+  },
 });

@@ -22,7 +22,7 @@ fi
 # === 上传文件 ===
 echo "🚀 上传到服务器: $USER@$HOST:$REMOTE_DIR"
 # -o StrictHostKeyChecking=no 防止交互确认
-scp -o StrictHostKeyChecking=no -r dist/ "$USER@$HOST:$REMOTE_DIR/"
+scp -o StrictHostKeyChecking=no -r dist/* "$USER@$HOST:$REMOTE_DIR/"
 
 # === 完成提示 ===
 if [ $? -eq 0 ]; then
