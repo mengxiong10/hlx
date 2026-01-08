@@ -8,9 +8,10 @@ import { PaymentStatus } from './PaymentStatus';
 
 export interface PaymentProps {
   id: string;
+  onSuccess?: () => void;
 }
 
-export function Payment({ id }: PaymentProps) {
+export function Payment({ id, onSuccess }: PaymentProps) {
   const user = useUser();
   const [open, setOpen] = useState(false);
   const [info, setInfo] = useState<PaymentInfo | null>(null);
@@ -61,6 +62,7 @@ export function Payment({ id }: PaymentProps) {
           open={open}
           product={product.data}
           onClose={handleClose}
+          onSuccess={onSuccess}
         ></PaymentStatus>
       )}
     </>
