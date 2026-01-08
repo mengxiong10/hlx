@@ -34,6 +34,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
+      - name: build
+        run: pnpm run build
+
       - name: Make release.sh executable
         run: chmod +x build/release.sh
 
