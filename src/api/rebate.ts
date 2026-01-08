@@ -49,3 +49,18 @@ export interface WithdrawRecord {
   create_time: number;
   update_time: number;
 }
+
+export interface WithdrawRecordResponse {
+  content: WithdrawRecord[];
+  totalElements: number;
+}
+
+export interface WithdrawRecord {
+  id: number;
+  amount: number;
+  wechatAccount?: string;
+  status: string;
+  remark: string;
+  create_time: number;
+  update_time: number;
+}
