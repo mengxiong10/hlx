@@ -7,7 +7,7 @@ set -e
 USER="root"                   # 登录用户名
 HOST="47.99.206.14"                # 服务器 IP
 REMOTE_DIR="/www/wwwroot/front" # 上传目标目录
-BUILD_CMD="npm run build"
+BUILD_CMD="pnpm run build"
 
 # === 开始构建 ===
 echo "🧱 构建项目..."
@@ -21,7 +21,8 @@ fi
 
 # === 上传文件 ===
 echo "🚀 上传到服务器: $USER@$HOST:$REMOTE_DIR"
-scp -r dist/* $USER@$HOST:$REMOTE_DIR/
+# -o StrictHostKeyChecking=no 防止交互确认
+scp -o StrictHostKeyChecking=no -r dist/ "$USER@$HOST:$REMOTE_DIR/"
 
 # === 完成提示 ===
 if [ $? -eq 0 ]; then
