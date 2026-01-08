@@ -88,7 +88,7 @@ export function Withdraw({ open, onClose, onSuccess }: WithdrawProps) {
       open={open}
       onClose={handleClose}
       onConfirm={handleConfirm}
-      loading={withdrawMutation.isLoading}
+      confirmLoading={withdrawMutation.isLoading}
     >
       <FormControl fullWidth variant="standard" sx={{ mt: 2 }}>
         <InputLabel htmlFor="withdraw-amount">提现金额（分）</InputLabel>
