@@ -1,6 +1,6 @@
 import { Tab, Tabs, Tooltip } from '@mui/material';
 import { useCallback, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getTextBookDetail, getTextbookUnit } from 'src/api/textbook';
 import { isObject } from 'src/util';
@@ -11,6 +11,7 @@ export function Textbook() {
   const location = useLocation();
   const navigate = useNavigate();
   const { textbookId, unitId, type } = useParams();
+  const queryClient = useQueryClient();
 
   const prefix = location.pathname.match(/^\/\w+/)![0];
 
@@ -19,6 +20,12 @@ export function Textbook() {
   const textbookDetail = useQuery(['textbookDetail', textbookId], () =>
     getTextBookDetail(textbookId!)
   );
+
+  const handlePaymentSuccess = useCallback(() => {
+    // 刷新textbook详情和单元列表
+    queryClient.invalidateQueries(['textbookDetail', textbookId]);
+    queryClient.invalidateQueries(['textbookUnits', textbookId]);
+  }, [queryClient, textbookId]);
 
   const units = textbookUnits.data || [];
 
@@ -48,7 +55,7 @@ export function Textbook() {
   return (
     <PageContainer
       replaceBreadcrumbs={replaceBreadcrumbs}
-      action={textbookDetail.data?.isAuth === 1 ? null : <Payment id={textbookId!} />}
+      action={textbookDetail.data?.isAuth === 1 ? null : <Payment id={textbookId!} onSuccess={handlePaymentSuccess} />}
     >
       <Tabs
         variant="scrollable"
