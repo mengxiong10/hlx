@@ -7,6 +7,7 @@ import { Subject, SubjectBaseKeys } from './Subject';
 import { StudyContainer } from './Container';
 import { useStudy } from './useStudy';
 import { ReadingContent } from './RouteReading';
+import { formatText } from './utils';
 
 interface SortingProps {
   data: SortingInfo[];
@@ -93,7 +94,7 @@ export function Sorting({ data, title, baseKey, vertical = false }: SortingProps
               {...attributes}
               onMouseEnter={() => handleMouseEnter(item.id)}
             >
-              <Typography variant="study">{item.content.replace(/_/g, ' ')}</Typography>
+              <Typography variant="study">{formatText(item.content)}</Typography>
             </Paper>
           )}
         ></Sortable>

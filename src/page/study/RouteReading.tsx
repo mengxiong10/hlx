@@ -7,6 +7,7 @@ import { useEffect, useRef } from 'react';
 import { StudyContainer } from './Container';
 import { MediaList } from './MediaList';
 import { useStudy } from './useStudy';
+import { formatText } from './utils';
 
 export function ReadingContent({ current }: { current: ReadInfo }) {
   const translation: {
@@ -16,18 +17,18 @@ export function ReadingContent({ current }: { current: ReadInfo }) {
   } = {
     key: 'translation',
     icon: <TranslateIcon fontSize="inherit" />,
-    text: current.translation?.split('/').map((item) => item.replace(/_/g, ' ')),
+    text: current.translation?.split('/').map((item) => formatText(item)),
   };
   const content = {
     key: 'content',
     icon: <SourceIcon fontSize="inherit" />,
-    text: current.content?.split(/\s{2,}/).map((item) => item.replace(/_/g, ' ')),
+    text: current.content?.split(/\s{2,}/).map((item) => formatText(item)),
   };
 
   const analysis = {
     key: 'analysis',
     icon: <InfoIcon fontSize="inherit" />,
-    text: current.analysis?.replace(/_/g, ' '),
+    text: current.analysis && formatText(current.analysis),
   };
 
   const list = [analysis, translation, content];

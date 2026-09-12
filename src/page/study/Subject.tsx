@@ -3,6 +3,7 @@ import { Attach } from 'src/api/study';
 import { PickByValue } from 'utility-types';
 import reactStringReplace from 'react-string-replace';
 import { MediaList } from './MediaList';
+import { formatText } from './utils';
 
 type SubjectBaseKey<T> = keyof PickByValue<Required<T>, string | Attach>;
 
@@ -30,7 +31,7 @@ export function Subject<T extends Record<string, any>>({
     if (typeof value === 'string') {
       return (
         <Typography key={String(key)} variant="study" mb={1} mt={1}>
-          {reactStringReplace(value.replace(/_/g, ' '), '#', () => {
+          {reactStringReplace(formatText(value), '#', () => {
             return (
               <Box
                 sx={{
