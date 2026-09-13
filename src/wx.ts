@@ -17,17 +17,17 @@ export async function initWxConfig() {
     jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'],
   });
 
-  wx.error((err) => {
+  wx.error((err: any) => {
     console.error('[wx] config error:', err);
   });
 
   wx.ready(() => {
     wx.checkJsApi({
       jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'],
-      success(res) {
+      success(res: any) {
         console.log('[wx] checkJsApi:', res);
       },
-      fail(err) {
+      fail(err: any) {
         console.error('[wx] checkJsApi fail:', err);
       },
     });
@@ -39,15 +39,15 @@ export async function initWxConfig() {
       title: info.title || '慧来学', // 分享标题
       desc: info.des || '慧来学描述', // 分享描述
       imgUrl, // 分享图标
-      success(res) {
+      success(res: any) {
         console.log('[wx] updateAppMessageShareData success:', res);
       },
 
-      fail(err) {
+      fail(err: any) {
         console.error('[wx] updateAppMessageShareData fail:', err);
       },
 
-      complete(res) {
+      complete(res: any) {
         console.log('[wx] updateAppMessageShareData complete:', res);
       },
     });
