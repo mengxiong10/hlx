@@ -10,6 +10,7 @@ export async function initWxConfig() {
   const link = `${url}?inviteCode=${inviteCode}`;
 
   wx.config({
+    debug: true,
     appId,
     signature,
     nonceStr: noncestr,
