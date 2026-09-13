@@ -17,12 +17,37 @@ export async function initWxConfig() {
     jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'],
   });
 
+  wx.error((err) => {
+    console.error('[wx] config error:', err);
+  });
+
   wx.ready(() => {
+    wx.checkJsApi({
+      jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'],
+      success(res) {
+        console.log('[wx] checkJsApi:', res);
+      },
+      fail(err) {
+        console.error('[wx] checkJsApi fail:', err);
+      },
+    });
+
     wx.updateAppMessageShareData({
       link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
       title: info.title || '慧来学', // 分享标题
       desc: info.des || '慧来学描述', // 分享描述
       imgUrl: info.imgUrl || '', // 分享图标
+      success(res) {
+        console.log('[wx] updateAppMessageShareData success:', res);
+      },
+
+      fail(err) {
+        console.error('[wx] updateAppMessageShareData fail:', err);
+      },
+
+      complete(res) {
+        console.log('[wx] updateAppMessageShareData complete:', res);
+      },
     });
 
     wx.updateTimelineShareData({
