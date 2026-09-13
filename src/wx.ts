@@ -10,7 +10,6 @@ export async function initWxConfig() {
   const link = `${url}?inviteCode=${inviteCode}`;
 
   wx.config({
-    debug: true,
     appId,
     signature,
     nonceStr: noncestr,
@@ -40,10 +39,6 @@ export async function initWxConfig() {
       title: info.title || '慧来学', // 分享标题
       desc: info.des || '慧来学描述', // 分享描述
       imgUrl, // 分享图标
-
-      fail(err: any) {
-        console.error('[wx] updateAppMessageShareData fail:', err);
-      },
     });
 
     wx.updateTimelineShareData({
