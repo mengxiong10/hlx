@@ -32,11 +32,13 @@ export async function initWxConfig() {
       },
     });
 
+    const imgUrl = (info.imgUrl || '').replace(/^http:/, 'https:');
+
     wx.updateAppMessageShareData({
       link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
       title: info.title || '慧来学', // 分享标题
       desc: info.des || '慧来学描述', // 分享描述
-      imgUrl: info.imgUrl || '', // 分享图标
+      imgUrl, // 分享图标
       success(res) {
         console.log('[wx] updateAppMessageShareData success:', res);
       },
@@ -53,7 +55,7 @@ export async function initWxConfig() {
     wx.updateTimelineShareData({
       link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
       title: info.title || '慧来学', // 分享标题
-      imgUrl: info.imgUrl || '', // 分享图标
+      imgUrl, // 分享图标
     });
   });
 }
